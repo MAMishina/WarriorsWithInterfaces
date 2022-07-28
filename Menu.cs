@@ -36,7 +36,7 @@ namespace WarriorsWithInterfaces
             }
         }
 
-        public void WriteTitle() //записывает ту самую строчку
+        public void WriteTitle() 
         {
             string forRecord = "ID#Дата добавления записи#Имя Война#Уровень HP";
             try
@@ -108,36 +108,42 @@ namespace WarriorsWithInterfaces
                 {
                     CleanArr(wariors);
                     String lineFromFile;
+                    titles = sr.ReadLine().Split("#");
                     lineFromFile = sr.ReadLine();
                     while (lineFromFile != null)
                     {
                         string[] lineToPrint = lineFromFile.Split("#");
                                                                                    // name               HP             
                         Console.WriteLine($"{lineToPrint[0],5} {lineToPrint[1],20} {lineToPrint[2],15} {lineToPrint[3],3} ");
-                        lineFromFile = sr.ReadLine();
+                        
                         int hp;
-                        int.TryParse(lineToPrint[3], out hp);
+                        Int32.TryParse(lineToPrint[3], out hp);
                         switch (lineToPrint[2])
                         {
-                            case "Гоблин":
+                            case " Гоблин ":
                                 Add(new Goblin(hp));
-                                Console.WriteLine($"Добавлен гоблин {index}");
+                                //Console.WriteLine($"Добавлен гоблин {index}");
                                 break;
-                            case "Доктор":
+                            case " Доктор ":
                                 Add(new Doctor(hp));
-                                Console.WriteLine($"Добавлен доктор {index}");
+                                //Console.WriteLine($"Добавлен доктор {index}");
                                 break;
-                            case "Орк":
+                            case " Орк ":
                                 Add(new Orc(hp));
-                                Console.WriteLine($"Добавлен орк {index}");
+                                //Console.WriteLine($"Добавлен орк {index}");
                                 break;
                             default:
                                 break;
                         }
+                        lineFromFile = sr.ReadLine();
                     }
                     Console.WriteLine();
                     Console.WriteLine("Файл успешно прочитан.");
                     Console.WriteLine();
+                    for (int i = 0; i < index; i++)
+                    {
+                        Console.WriteLine(wariors[i].Name);
+                    }
                 }
             }
             catch (Exception ex)

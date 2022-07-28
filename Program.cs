@@ -7,16 +7,16 @@
 
             Menu play = new Menu("play1.txt");
 
-            play.Open("play.txt");
+            play.Open("play1.txt");
 
             play.WriteTitle();
 
-            for (int i = 0; i < 10; i++)
-            {
-                play.Add(new Goblin(500));
-                play.Add(new Orc(300));
-                play.Add(new Doctor(200));
-            }
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    play.Add(new Goblin(500));
+            //    play.Add(new Orc(300));
+            //    play.Add(new Doctor(200));
+            //}
 
 
 
